@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Tarot Calixtino</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link rel="stylesheet" href="style.css" />
     <script src="https://unpkg.com/konva@9/konva.min.js"></script>
 </head>
@@ -13,11 +14,6 @@
     <h1>Tarot Calixtino</h1>
 
     <div class="controls">
-        <label>
-            Fondo:
-            <select id="bgSelect"></select>
-        </label>
-
         <label>
             Número:
             <input id="numberInput" placeholder="II" />
@@ -28,14 +24,14 @@
         </label>
 
         <button id="exportBtn">Exportar PNG</button>
-        <button id="deleteBtn" title="Supr / Backspace">Borrar seleccionado</button>
-        <button id="flipXBtn">Invertir horizontal</button>
-        <button id="flipYBtn">Invertir vertical</button>
-        <button id="clearBtn">Limpiar carta</button>
-        <button id="bringFrontBtn">Ó frente</button>
-        <button id="sendBackBtn">Ó fondo</button>
-        <button id="moveUpBtn">Subir capa</button>
-        <button id="moveDownBtn">Baixar capa</button>
+        <button id="deleteBtn" title="Borrar seleccionado"><i class="fa-solid fa-eraser"></i></button>
+        <button id="flipXBtn" title="Voltear horizontal"><i class="fa-solid fa-arrows-left-right"></i></button>
+        <button id="flipYBtn" title="Voltear vertical"><i class="fa-solid fa-arrows-up-down"></i></button>
+        <button id="bringFrontBtn" title="Traer ao fronte"><i class="fa-solid fa-angles-up"></i></button>
+        <button id="sendBackBtn" title="Enviar ao fondo"><i class="fa-solid fa-angles-down"></i></button>
+        <button id="moveUpBtn" title="Mover para arriba"><i class="fa-solid fa-angle-up"></i></button>
+        <button id="moveDownBtn" title="mover para abaixo"><i class="fa-solid fa-angle-down"></i></button>
+        <button id="clearBtn" title="Limpar carta"><i class="fa-solid fa-trash-can"></i></button>
     </div>
 </header>
 

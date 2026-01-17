@@ -5,12 +5,11 @@ const CARD_H = 1000;
 // Define tus categorías (carpetas dentro de /assets)
 const CATEGORIES = [
     { key: "bodies", label: "Figuras" },
-    { key: "cabezas", label: "Cabezas" },
+    { key: "heads", label: "Cabezas" },
     { key: "hands", label: "Mans" },
     { key: "objects", label: "Obxectos" },
     { key: "creatures", label: "Criaturas" },
-    { key: "simbolos", label: "Símbolos" },
-    { key: "ornamentos", label: "Ornamentos" },
+    { key: "ornaments", label: "Ornamentos" },
 ];
 
 // En web estático no podemos listar carpetas sin servidor.
@@ -20,19 +19,17 @@ const ASSET_INDEX = {
     background: [
         "background.png",
     ],
-    bodies: [ "body_1.png" ],
-    cabezas: [],
+    bodies: [ "body_1.png", "body_2.png" ],
+    heads: [ "head_1.png" ],
     hands: [ "h_blessing.png", "h_grabing.png", "h_open.png", "h_signing.png"],
     objects: [ "o_crown.png", "o_scepter.png", "o_aureole.png" ],
-    creatures: [ "a_lion.png" ],
-    simbolos: [],
-    ornamentos: [],
+    creatures: [ "a_lion.png", "a_beast.png" ],
+    ornaments: [ "ornament_1.png" ],
 };
 
 // ---------- UI ----------
 const tabsEl = document.getElementById("tabs");
 const gridEl = document.getElementById("assetGrid");
-const bgSelect = document.getElementById("bgSelect");
 const titleInput = document.getElementById("titleInput");
 const numberInput = document.getElementById("numberInput");
 const flipXBtn = document.getElementById("flipXBtn");
@@ -238,19 +235,6 @@ function renderGrid() {
     }
 }
 
-// Background select
-function initBackgroundSelect() {
-    bgSelect.innerHTML = "";
-    for (const bg of ASSET_INDEX.background) {
-        const opt = document.createElement("option");
-        opt.value = bg;
-        opt.textContent = bg;
-        bgSelect.appendChild(opt);
-    }
-    bgSelect.onchange = () => setBackground(bgSelect.value);
-    if (ASSET_INDEX.background[0]) setBackground(ASSET_INDEX.background[0]);
-}
-
 numberInput.addEventListener("input", () => {
     numberNode.text(numberInput.value.toUpperCase());
     layerUi.draw();
@@ -353,6 +337,6 @@ moveDownBtn.onclick = () => {
 // Init
 renderTabs();
 renderGrid();
-initBackgroundSelect();
+setBackground(ASSET_INDEX.background[0]); 
 titleNode.text("");
 layerUi.draw();
