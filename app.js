@@ -20,11 +20,11 @@ const ASSET_INDEX = {
         "background.png",
     ],
     bodies: [ "body_1.png", "body_2.png" ],
-    heads: [ "head_1.png" ],
-    hands: [ "h_blessing.png", "h_grabing.png", "h_open.png", "h_signing.png"],
-    objects: [ "o_crown.png", "o_scepter.png", "o_aureole.png" ],
+    heads: [ "head_1.png", "head_2.png", "head_3.png" ],
+    hands: [ "h_blessing.png", "h_grabing.png", "h_open.png", "h_signing.png", "h_back.png"],
+    objects: [ "o_crown.png", "o_scepter.png", "o_aureole.png", "wings.png" ],
     creatures: [ "a_lion.png", "a_beast.png" ],
-    ornaments: [ "ornament_1.png" ],
+    ornaments: [ "ornament_1.png", "ornament_2.png" ],
 };
 
 // ---------- UI ----------
