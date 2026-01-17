@@ -53,17 +53,17 @@ function fitStageIntoParent() {
     const wrap = document.querySelector(".canvasWrap");
     if (!wrap) return;
 
-    // Ojo: .canvasWrap tiene padding 16px a cada lado (32 total)
-    const containerWidth = wrap.clientWidth - 32;
-    const containerHeight = wrap.clientHeight - 32;
+    const containerWidth = Math.max(1, wrap.clientWidth - 32);
+    const containerHeight = Math.max(1, wrap.clientHeight - 32);
 
-    // Escala para encajar manteniendo proporción (nunca más de 1)
-    const scale = Math.min(containerWidth / CARD_W, containerHeight / CARD_H, 1);
+    let scale = Math.min(containerWidth / CARD_W, containerHeight / CARD_H, 1);
+
+    // evita “desaparecer”
+    scale = Math.max(0.12, scale);
 
     stage.scale({ x: scale, y: scale });
     stage.width(CARD_W * scale);
     stage.height(CARD_H * scale);
-
     stage.draw();
 }
 

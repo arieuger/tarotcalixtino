@@ -306,5 +306,10 @@ footer{
         grid-template-rows: minmax(320px, 1fr) auto;
         height: auto;
     }
-    #sidebar{ max-height: 46vh; }
+    .canvasWrap{
+        min-height: 420px;
+    }
+    #sidebar{
+        max-height: 32vh;
+    }
 }
