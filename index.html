@@ -1,0 +1,58 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Tarot Calixtino</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/konva@9/konva.min.js"></script>
+</head>
+<body>
+<header>
+    <h1>Tarot Calixtino</h1>
+
+    <div class="controls">
+        <label>
+            Fondo:
+            <select id="bgSelect"></select>
+        </label>
+
+        <label>
+            Número:
+            <input id="numberInput" placeholder="II" />
+        </label>
+        <label>
+            Título:
+            <input id="titleInput" placeholder="EL ERMITAÑO" />
+        </label>
+
+        <button id="exportBtn">Exportar PNG</button>
+        <button id="deleteBtn" title="Supr / Backspace">Borrar seleccionado</button>
+        <button id="flipXBtn">Invertir horizontal</button>
+        <button id="flipYBtn">Invertir vertical</button>
+        <button id="clearBtn">Limpiar carta</button>
+    </div>
+</header>
+
+<main>
+    <aside id="sidebar">
+        <div class="tabs" id="tabs"></div>
+        <div class="assetGrid" id="assetGrid"></div>
+        <p class="hint">
+            Consejo: click para añadir. Arrastra para mover. Usa los tiradores para girar/escalar.
+        </p>
+    </aside>
+
+    <section class="canvasWrap">
+        <div id="stage"></div>
+    </section>
+</main>
+
+<footer>
+    <small>Assets: PNGs con transparencia en /assets/*</small>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
