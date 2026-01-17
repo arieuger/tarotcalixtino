@@ -106,9 +106,10 @@ const titleNode = new Konva.Text({
     align: "center",
     text: "",
     fontSize: 36,
-    fontFamily: "serif",
+    fontFamily: "Cormorant Unicase",
     fill: "#171711",
     listening: false,
+    fontWeight: 700,
 });
 layerUi.add(titleNode);
 
@@ -119,9 +120,10 @@ const numberNode = new Konva.Text({
     align: "center",
     text: "",
     fontSize: 32,
-    fontFamily: "serif",
+    fontFamily: "Cormorant Unicase",
     fill: "#111",
     listening: false,
+    fontWeight: "bold",
 });
 layerUi.add(numberNode);
 
@@ -242,7 +244,7 @@ numberInput.addEventListener("input", () => {
 
 // Title input
 titleInput.addEventListener("input", () => {
-    titleNode.text(titleInput.value.toUpperCase());
+    titleNode.text(titleInput.value);
     layerUi.draw();
 });
 

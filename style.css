@@ -1,107 +1,310 @@
-/* style.css */
-* { box-sizing: border-box; }
-body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+:root{
+    --bg: #f4f1ea;
+    --panel: #ffffff;
+    --muted: #6b6b6b;
+    --border: rgba(0,0,0,.10);
+    --shadow: 0 10px 30px rgba(0,0,0,.10);
+    --radius: 14px;
+    --radius-sm: 10px;
+    --gap: 12px;
+}
 
-header {
-    padding: 12px 16px;
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    gap: 16px;
-    align-items: center;
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+    margin:0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--bg);
+    color:#141414;
+}
+
+/* Topbar */
+.topbar{
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display:flex;
+    gap: var(--gap);
+    align-items:center;
     justify-content: space-between;
+    padding: 12px 14px;
+    background: rgba(255,255,255,.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
 }
-h1 { font-size: 18px; margin: 0; }
-
-.controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-.controls input, .controls select { padding: 6px 8px; }
-.controls button { padding: 7px 10px; cursor: pointer; }
-
-main {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    height: calc(100vh - 110px);
+.topbar__left{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    min-width: 140px;
+}
+h1{
+    font-size: 20px;
+    font-weight: 600;
+    margin:0;
+    letter-spacing: .4px;
+    font-family: "Cormorant Unicase", serif;
 }
 
-#sidebar {
-    border-right: 1px solid #ddd;
-    padding: 12px;
-    overflow: auto;
-}
-
-.tabs {
-    display: flex;
+/* Controls */
+.controls{
+    display:flex;
+    gap: 8px;
+    align-items:center;
     flex-wrap: wrap;
+    justify-content:flex-end;
+}
+
+/* Topbar: mejor centrado vertical real */
+.topbar{
+    min-height: 64px;              /* asegura “centro” consistente */
+    padding: 12px 22px;            /* más aire (especialmente derecha) */
+}
+
+/* Esto asegura que el título quede centrado visualmente */
+.topbar__left{
+    align-items: center;
+    height: 100%;
+}
+
+/* Más margen desde el lado derecho */
+.controls{
+    padding-right: 10px;           /* extra margen a la derecha */
+}
+
+/* Labels en línea y más bonitos */
+.controls label{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--muted);
+    padding: 6px 8px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.55);
+    border: 1px solid rgba(0,0,0,.06);
+}
+
+/* Inputs más “app” */
+.controls input{
+    height: 34px;
+    width: 140px;
+    padding: 0 10px;
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 10px;
+    background: rgba(255,255,255,.95);
+    outline: none;
+    font-size: 13px;
+    color: #141414;
+}
+
+.controls input#numberInput{ width: 72px; text-align:center; letter-spacing:.5px; }
+.controls input#titleInput{ width: 220px; }
+
+/* Focus mejor */
+.controls input:focus{
+    border-color: rgba(0,0,0,.30);
+    box-shadow: 0 0 0 4px rgba(0,0,0,.06);
+}
+
+/* Botón primary “export” más atractivo */
+.btn.primary{
+    background: #141414;
+    color: #fff;
+    border-color: rgba(0,0,0,.6);
+    box-shadow: 0 10px 22px rgba(0,0,0,.18);
+}
+
+.btn.primary:hover{
+    box-shadow: 0 14px 26px rgba(0,0,0,.22);
+}
+
+.btn.primary:active{
+    transform: translateY(1px);
+}
+
+.btn.danger{
+    background: #fff5f5;
+    border-color: rgba(200,0,0,0.35);
+    color: #b00000;
+    box-shadow: 0 4px 12px rgba(255,0,0,0.08);
+}
+
+.btn.danger:hover{
+    background: #ffe3e3;
+    box-shadow: 0 8px 18px rgba(255,0,0,0.15);
+}
+
+.btn.danger:active{
+    transform: translateY(1px);
+}
+
+
+.input, select{
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fff;
+    outline: none;
+}
+.input:focus, select:focus{
+    border-color: rgba(0,0,0,.25);
+}
+
+.btn{
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #fff;
+    cursor: pointer;
+    display:inline-flex;
+    align-items:center;
+    gap: 8px;
+    user-select:none;
+    transition:
+            background .15s ease,
+            color .15s ease,
+            box-shadow .15s ease,
+            transform .04s ease;
+}
+.btn:hover{ 
+    box-shadow: 0 6px 18px rgba(0,0,0,.08);
+    background: #a3e1d1;
+}
+.btn:active{ transform: translateY(1px); }
+
+.btn.icon{
+    width: 36px;
+    padding: 0;
+    justify-content:center;
+}
+.btn.icon:not(.danger):not(.primary):hover{
+    background: #eaeaea;
+    color: #141414;
+    box-shadow: 0 6px 14px rgba(0,0,0,.10);
+}
+.btn.danger{
+    background: #fff;
+    border-color: rgba(255,0,0,.25);
+}
+.btn.primary{
+    background: #141414;
+    color: #fff;
+    border-color: rgba(0,0,0,.6);
+}
+
+/* Layout */
+main{
+    display:grid;
+    grid-template-columns: 340px 1fr;
+    gap: var(--gap);
+    padding: var(--gap);
+    height: calc(100vh - 64px);
+}
+
+/* Sidebar panel */
+#sidebar{
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 12px;
+    overflow:auto;
+    min-height: 0;
+}
+
+.tabs{
+    display:flex;
+    flex-wrap:wrap;
     gap: 6px;
     margin-bottom: 10px;
 }
-.tab {
-    border: 1px solid #ccc;
-    padding: 6px 8px;
-    border-radius: 8px;
-    cursor: pointer;
-    user-select: none;
+
+.tab{
+    padding: 7px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: #fff;
+    cursor:pointer;
     font-size: 13px;
+    color:#222;
 }
-.tab.active { border-color: #222; }
+.tab.active{
+    background: #141414;
+    color:#fff;
+    border-color: rgba(0,0,0,.6);
+}
 
-.assetGrid {
-    display: grid;
+/* Assets grid */
+.assetGrid{
+    display:grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-}
-.asset {
-    border: 1px solid #eee;
-    border-radius: 10px;
-    padding: 6px;
-    background: #fafafa;
-    cursor: pointer;
-    display: grid;
-    place-items: center;
-}
-.asset img { width: 100%; height: 90px; object-fit: contain; }
-
-.hint { font-size: 12px; color: #666; margin-top: 10px; }
-
-.canvasWrap {
-    display: grid;
-    place-items: center;
-    background: #f3f3f3;
-    overflow: auto;
-    padding: 16px;
+    gap: 10px;
 }
 
-#stage {
-    background: white;
-    border: 1px solid #ddd;
+.asset{
+    border: 1px solid var(--border);
     border-radius: 12px;
-    overflow: hidden;
+    background: #fff;
+    padding: 8px;
+    cursor:pointer;
+    display:grid;
+    gap: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.04);
+    transition: transform .05s ease, box-shadow .15s ease;
 }
-
-footer {
-    padding: 10px 16px;
-    border-top: 1px solid #ddd;
+.asset:hover{
+    box-shadow: 0 10px 22px rgba(0,0,0,.08);
+    transform: translateY(-1px);
+}
+.asset img{
+    width: 100%;
+    height: 92px;
+    object-fit: contain;
+}
+.hint{
+    margin-top: 10px;
     font-size: 12px;
-    color: #666;
+    color: var(--muted);
 }
 
-/* Evita que el grid se rompa por contenidos anchos */
-.canvasWrap { min-width: 0; }
+/* Canvas area */
+.canvasWrap{
+    min-width: 0;
+    background: rgba(255,255,255,.45);
+    border: 1px dashed rgba(0,0,0,.15);
+    border-radius: var(--radius);
+    display:grid;
+    place-items:center;
+    padding: 14px;
+    overflow:auto;
+    min-height: 0;
+}
 
-/* Responsive: en pantallas estrechas, sidebar abajo */
-@media (max-width: 900px) {
-    main {
+#stage{
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    overflow:hidden;
+}
+
+/* Footer */
+footer{
+    padding: 10px 14px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+    background: rgba(255,255,255,.7);
+}
+
+/* Responsive */
+@media (max-width: 980px){
+    main{
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr auto;
+        grid-template-rows: minmax(320px, 1fr) auto;
         height: auto;
     }
-
-    #sidebar {
-        border-right: none;
-        border-top: 1px solid #ddd;
-        max-height: 45vh;
-    }
-
-    .canvasWrap {
-        min-height: 60vh;
-    }
+    #sidebar{ max-height: 46vh; }
 }
