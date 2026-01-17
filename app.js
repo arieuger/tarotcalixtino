@@ -40,6 +40,10 @@ const flipYBtn = document.getElementById("flipYBtn");
 const exportBtn = document.getElementById("exportBtn");
 const deleteBtn = document.getElementById("deleteBtn");
 const clearBtn = document.getElementById("clearBtn");
+const bringFrontBtn = document.getElementById("bringFrontBtn");
+const sendBackBtn = document.getElementById("sendBackBtn");
+const moveUpBtn = document.getElementById("moveUpBtn");
+const moveDownBtn = document.getElementById("moveDownBtn");
 
 // ---------- Konva Stage ----------
 const stage = new Konva.Stage({
@@ -316,6 +320,35 @@ flipYBtn.onclick = () => {
     layerMain.draw();
 };
 
+function redrawAfterZChange() {
+    // El transformer está en layerUi, así que solo redibujamos main y ui
+    layerMain.draw();
+    layerUi.draw();
+}
+
+bringFrontBtn.onclick = () => {
+    if (!selectedNode) return;
+    selectedNode.moveToTop();      // dentro de layerMain
+    redrawAfterZChange();
+};
+
+sendBackBtn.onclick = () => {
+    if (!selectedNode) return;
+    selectedNode.moveToBottom();
+    redrawAfterZChange();
+};
+
+moveUpBtn.onclick = () => {
+    if (!selectedNode) return;
+    selectedNode.moveUp();         // sube 1 posición
+    redrawAfterZChange();
+};
+
+moveDownBtn.onclick = () => {
+    if (!selectedNode) return;
+    selectedNode.moveDown();       // baja 1 posición
+    redrawAfterZChange();
+};
 
 // Init
 renderTabs();
