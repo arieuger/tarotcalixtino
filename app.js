@@ -5,6 +5,7 @@ const CARD_H = 1000;
 // Define tus categorías (carpetas dentro de /assets)
 const CATEGORIES = [
     { key: "bodies", label: "Figuras" },
+    { key: "bodyparts", label: "Apéndices"},
     { key: "heads", label: "Cabezas" },
     { key: "hands", label: "Mans" },
     { key: "objects", label: "Obxectos" },
@@ -20,10 +21,11 @@ const ASSET_INDEX = {
         "background.png",
     ],
     bodies: [ "body_1.png", "body_2.png" ],
-    heads: [ "head_1.png", "head_2.png", "head_3.png" ],
+    bodyparts: [  "wings.png", "tail.png", "siren_tail.png" ],
+    heads: [ "head_1.png", "head_2.png", "head_3.png", "head_4.png" ],
     hands: [ "h_blessing.png", "h_grabing.png", "h_open.png", "h_signing.png", "h_back.png"],
-    objects: [ "o_crown.png", "o_scepter.png", "o_aureole.png", "wings.png" ],
-    creatures: [ "a_lion.png", "a_beast.png" ],
+    objects: [ "o_crown.png", "o_scepter.png", "o_aureole.png", "o_sun.png", "o_moon.png" ],
+    creatures: [ "a_lion.png", "a_beast.png", "fish.png" ],
     ornaments: [ "ornament_1.png", "ornament_2.png" ],
 };
 
